@@ -26,9 +26,7 @@ function inicio() {
     console.log(sorte)
 
     async function trocar(a, s) {
-        $(`#${a.id}`).attr({
-            style: `background: ${s}`
-        })
+        $(`#${a.id}`).attr({style: `background: ${s};`})
 
         function voltar() {
             return new Promise (
