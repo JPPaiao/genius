@@ -1,2 +1,3 @@
 # Genius
- Recriando o jogo
+ Implementei o jogo genius sem ver vídeos para ver se eu conseguia fazer sozinho demorou uns 3 dias, mas deu certo kkk, acho que ainda falta algumas coisas mas conseguir recriar o jogo sozinho.
+ Estou aprendendo jQuery, então tentei usar um pouco
