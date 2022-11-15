@@ -76,7 +76,6 @@ function jogador(ele) {
         sorte.shift()
         user++
     } else {
-        console.log("erou")
         sorte = []
         pass = 0
         user = 1
@@ -87,30 +86,3 @@ function jogador(ele) {
         setTimeout(start, 400)
     }
 }
-
-
-
-
-
-
-
-
-
-
-//
-// async function trocar(a) {
-//     let v = voltar()
-//     function voltar()
-//     {
-//         return new Promise
-//         (
-//             resolve => {
-//                 setTimeout(() => {
-//                     let g = a.style.background = ''
-//                 }, 400)
-//             }
-//         )
-//     }
-//     return await v
-// }
-// return sortear
