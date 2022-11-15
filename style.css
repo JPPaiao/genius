@@ -35,6 +35,7 @@ body {
     width: 100%;
     height: 250px;
     border: 2px solid black;
+    cursor: pointer;
 }
 
 .red {
@@ -78,6 +79,7 @@ body {
     border: 2px solid black;
     padding: 12px 30px;
     background: linear-gradient(to left, red, green, yellow, blue);
+    cursor: pointer;
 }
 
 #boton:hover {

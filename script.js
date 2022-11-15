@@ -4,47 +4,45 @@ let filhos = genusChildren[0].children
 var controle
 var ok = true
 var pass = 0
-var user = 1
 var sorte = []
-let sortLen
+var user = 1
 let fil = []
 let color = []
 
+function start() {
+    controle = setInterval(inicio, 800)
+}
 
-for (let colors of filhos) {
-    let corId = colors.id
-    let cor = corId
-
-    if (color.includes(cor) || cor === 'black') break
-    fil.push(colors)
-    color.push(cor)
+function numberAleatorio() {
+    return Math.floor(Math.random()*4)
 }
 
 function inicio() {
-    let random = () => {return Math.floor(Math.random()*4)}
-    let unico = random()
-    let ale = color[unico]
+    let random = numberAleatorio()
 
-    sorte.push(ale)
-    sortLen = sorte.length
-    trocar(fil[unico], ale)
+    sorte.push(color[random])
+    trocar(fil[random], color[random])
+
+    console.log(sorte)
 
     async function trocar(a, s) {
-        a.style.background = s
+        $(`#${a.id}`).attr({
+            style: `background: ${s}`
+        })
 
-        let v = voltar()
-        function voltar()
-        {
-            return new Promise
-            (
+        function voltar() {
+            return new Promise (
                 resolve => {
                     setTimeout(() => {
-                        let g = a.style.background = ''
-                    }, 400)
+                        $(`#${a.id}`).attr({
+                            style: ''
+                        })
+                    }, 300)
                 }
             )
         }
-        return await v
+
+        voltar()
     }
 
     if (pass >= user) {
@@ -54,35 +52,34 @@ function inicio() {
     } else {
       pass++
     }
-
 }
 
-function start() {
-    if (ok) {
-        controle = setInterval(inicio, 800);
-    }
-}
+function jogador(elemento) {
+    let corElemento = elemento.target.id
+    let acertos = 0
 
-for (let c of fil) {
-    c.addEventListener("click", jogador)
-}
-
-function jogador(ele) {
-    let eleCor = ele.target.id
-    let acerto = 0
-
-    if (eleCor == sorte[0]) {
-        acerto += 1
+    if (corElemento === sorte[0]) {
         sorte.shift()
+        acertos++
         user++
     } else {
         sorte = []
         pass = 0
         user = 1
+        clearInterval(controle)
+        controle = null
     }
 
     ok = (sorte == '') ? true : false
-    if (ok) {
-        setTimeout(start, 400)
-    }
+    if (ok) start()
+}
+
+for (let colors of filhos) {
+    if (color.includes(colors.id) || colors.id === 'black') break
+    fil.push(colors)
+    color.push(colors.id)
+}
+
+for (let c of fil) {
+    $(`#${c.id}`).on("click", jogador)
 }
